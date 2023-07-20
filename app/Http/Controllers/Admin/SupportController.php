@@ -56,7 +56,7 @@ class SupportController extends Controller
             return back();
         }
 
-        $support->update($request->only('subject','body'));
+        $support->update($request->validated());
         return redirect()->route('supports.index');
     }
     public function destroy(string|int $id,  Support $support)
