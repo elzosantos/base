@@ -14,7 +14,7 @@
         <th> Ação </th>
     </thead>
     <tbody>
-        @foreach ($supp as $support )
+        @foreach ($supports as $support )
             <tr>
                 <td>{{ $support->subject }}</td>
                 <td>{{ $support->status }}</td>

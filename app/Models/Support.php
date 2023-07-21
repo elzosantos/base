@@ -15,8 +15,5 @@ class Support extends Model
         'body', 
         'status'
     ];
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }   
+ 
 }

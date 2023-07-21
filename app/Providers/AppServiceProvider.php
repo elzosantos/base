@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Support;
-use App\Observers\SupportObserver;
-use App\Repositories\{SupportEloquentORM};
+use App\Repositories\SupportEloquentORM;
 use App\Repositories\SupportRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
