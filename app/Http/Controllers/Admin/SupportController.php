@@ -20,8 +20,17 @@ class SupportController extends Controller
     }
     public function index(Request $request)
     {
-        $supports = $this->service->getAll($request->filter);
-        return view('admin.supports.index', compact('supports'));
+         $supports =  $this->service->getAll($request->filter);
+ 
+
+        foreach($supports as $sup){
+
+            $supp[] = (object) $sup;
+     
+        }
+       
+
+        return view('admin.supports.index', compact('supp'));
     }
 
     public function create()
@@ -55,11 +64,13 @@ class SupportController extends Controller
         return view('admin.supports.edit', compact('support'));
     }
 
-    public function update(UpdateSupportDTO $dto, StoreUpdateSupport $request) 
+    public function update(UpdateSupportDTO $dto, StoreUpdateSupport $request)
     {
+        
         $support = $this->service->update(
             UpdateSupportDTO::makeFromRequest($request)
         );
+     
         if (!$support) {
             return back();
         }

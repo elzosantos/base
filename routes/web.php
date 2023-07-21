@@ -14,7 +14,6 @@ Route::get('/supports', [SupportController::class, 'index'])->name('supports.ind
 
 
 
-Route::get('/contato', [SiteController::class, 'contact']);
 Route::get('/', function () {
     return view('welcome');
 });
