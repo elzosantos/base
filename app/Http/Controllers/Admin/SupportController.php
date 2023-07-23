@@ -53,11 +53,10 @@ class SupportController extends Controller
         );
 
         return redirect()->route('supports.index');
-    }
-
+    } 
    
 
-    public function update(StoreUpdateSupport $request, UpdateSupportDTO $dto)
+    public function update( StoreUpdateSupport $request )
     {
         $support = $this->service->update(
             UpdateSupportDTO::makeFromRequest($request)
