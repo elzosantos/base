@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\SupportStatus;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,8 +14,15 @@ class Support extends Model
     use HasFactory;
     protected $fillable = [
         'subject',
-        'body', 
+        'body',
         'status'
     ];
- 
+
+    public function status(): Attribute
+    {
+        return Attribute::make(
+            set: fn (SupportStatus $status) => $status->name
+
+        );
+    }
 }
