@@ -16,7 +16,7 @@ class SupportService
     {
     }
     public function paginate(
-        string $page = '1',
+        int $page = 1,
         int $totalPerPage = 15,
         string $filter = null
     ): PaginationInterface {

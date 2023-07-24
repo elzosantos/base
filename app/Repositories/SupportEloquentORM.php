@@ -17,7 +17,7 @@ class SupportEloquentORM implements SupportRepositoryInterface
     ) {
     }
 
-    public function paginate(string $page = '1', int $totalPerPage = 15, string $filter = null): PaginationInterface
+    public function paginate(int $page = 1, int $totalPerPage = 15, string $filter = null): PaginationInterface
     {
         $result =  $this->model
             ->where(function ($query) use ($filter) {
@@ -26,9 +26,7 @@ class SupportEloquentORM implements SupportRepositoryInterface
                     $query->orWhere('body', 'like', "%{$filter}%");
                 }
             })
-            ->paginate($totalPerPage, ['*'], $page);
-      //      dd('asd');
-   //     dd((new PaginationPresenter($result))->items());
+            ->paginate($totalPerPage, ['*'],'page', $page); 
         return new PaginationPresenter($result);
     }
 
