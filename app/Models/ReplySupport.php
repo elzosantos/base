@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ReplySupport extends Model
 {
@@ -13,7 +14,7 @@ class ReplySupport extends Model
     protected $table = 'replies_support';
 
      /** Get user that created the support */
-     public function user(): BelongsTo
+     public function user(): BelongsTo 
      {
          return $this->belongsTo(User::class);
      }
@@ -21,4 +22,5 @@ class ReplySupport extends Model
      public function supports(): BelongsTo
      {
          return $this->belongsTo(Support::class);
+     }
 }
