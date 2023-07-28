@@ -5,7 +5,7 @@ namespace App\Services;
 
 use App\DTO\Replies\CreateReplyDTO;
 use App\Repositories\Contracts\ReplyRepositoryInterface;
-
+use Illuminate\Support\Facades\Gate;
 use stdClass;
 
 class ReplySupportService
@@ -26,6 +26,8 @@ class ReplySupportService
     }
     public function delete(string $id): bool
     {
+
+      
         return  $this->repository->delete($id);
     }
     public function store(){

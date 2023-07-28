@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body style="background-color:rgba(3, 35, 16, 0.619);">
+    @include('layouts.navigation')
     <section class="container px-4 mx-auto py-4"> 
         @yield('header') 
         <div> 

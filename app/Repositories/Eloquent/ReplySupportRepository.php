@@ -6,6 +6,7 @@ use App\DTO\Replies\CreateReplyDTO;
 use App\Models\ReplySupport;
 use App\Repositories\Contracts\ReplyRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use stdClass;
 
 class ReplySupportRepository implements ReplyRepositoryInterface
@@ -38,6 +39,11 @@ class ReplySupportRepository implements ReplyRepositoryInterface
 
     public function delete(string $id): bool
     {
-        return (bool) $this->model->findOrFail($id)->delete();
+        $reply = $this->model->findOrFail($id);
+        if (Gate::denies('owner', $reply->user->id)) {
+            abort(403, 'Not authorized');
+        }
+
+        return (bool) $reply->delete();
     }
 }
