@@ -2,23 +2,20 @@
 
 namespace App\DTO\Replies;
 
-use App\Enums\SupportStatus;
-use App\Http\Requests\StoreUpdateSupport;
+use App\Http\Requests\StoreReplySupportRequest;
 
-class CreateReplytDTO
+class CreateReplyDTO
 {
     public function __construct(
-        public string $supportId, 
-        public string $content
-
+        public string $supportId,
+        public string $content,
     ) {
     }
 
-    public static function makeFromRequest
-    (StoreUpdateSupport $request): self
+    public static function makeFromRequest(StoreReplySupportRequest $request): self
     {
         return new self(
-            $request->supportId, 
+            $request->support_id,
             $request->content
         );
     }

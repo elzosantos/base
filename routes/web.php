@@ -22,6 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
+    Route::delete('/supports/{id}/replies/{reply}', [ReplySupportController::class, 'destroy'])->name('replies.destroy');
+    Route::post('/supports/{id}/replies', [ReplySupportController::class, 'store'])->name('replies.store');
     Route::get('/supports/{id}/replies', [ReplySupportController::class, 'index'])->name('replies.index');
 
     Route::delete('/supports/{id}', [SupportController::class, 'destroy'])->name('supports.destroy');

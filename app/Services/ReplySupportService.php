@@ -3,11 +3,9 @@
 
 namespace App\Services;
 
-use App\DTO\Replies\CreateReplytDTO;
-use App\DTO\Supports\CreateSupportDTO;
-use App\DTO\Supports\UpdateSupportDTO;
+use App\DTO\Replies\CreateReplyDTO;
 use App\Repositories\Contracts\ReplyRepositoryInterface;
- 
+
 use stdClass;
 
 class ReplySupportService
@@ -18,16 +16,22 @@ class ReplySupportService
     }
     public function getAllBySupportId(string $supportId): array
     {
-        return  [];
+        return  $this->repository->getAllBySupportId($supportId);
     }
 
     public function createNew(
-        CreateReplytDTO $dto 
-    ): stdClass  {
-        throw new \Exception('not todo');
- 
+        CreateReplyDTO $dto
+    ): stdClass {
+        return $this->repository->createNew($dto);
     }
-   /* public function findOne(string $id): stdClass|null
+    public function delete(string $id): bool
+    {
+        return  $this->repository->delete($id);
+    }
+    public function store(){
+        
+    }
+    /* public function findOne(string $id): stdClass|null
     {
         return $this->repository->findOne($id);
     }
