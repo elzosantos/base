@@ -22,7 +22,8 @@ class ReplySupportService
     public function createNew(
         CreateReplyDTO $dto
     ): stdClass {
-        return $this->repository->createNew($dto);
+        $support =  $this->repository->createNew($dto);
+        return $support;
     }
     public function delete(string $id): bool
     {

@@ -9,6 +9,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use stdClass;
 
 class SupportReplied
 {
@@ -17,9 +18,15 @@ class SupportReplied
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct(
+        protected stdClass $support
+    )
     {
         //
+    }
+
+    public function support(): stdClass{
+        return $this->support;
     }
 
     /**
