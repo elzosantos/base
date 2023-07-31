@@ -21,6 +21,7 @@ class ReplySupport extends Model
         'content'
 
     ];
+    protected $with = ['user'];
 
     public function createdAt(): Attribute
     {
