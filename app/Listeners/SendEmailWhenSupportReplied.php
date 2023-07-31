@@ -3,11 +3,14 @@
 namespace App\Listeners;
 
 use App\Events\SupportReplied;
+use App\Mail\SupportRepliedMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
 
-class SendEmailWhenSupportReplied
+class SendEmailWhenSupportReplied 
 {
+    
     /**
      * Create the event listener.
      */
@@ -21,6 +24,10 @@ class SendEmailWhenSupportReplied
      */
     public function handle(SupportReplied $event): void
     {
-        $support =$event->support();
+        $reply =$event->reply();
+
+        Mail::to($reply->user['email'])->send(
+            new SupportRepliedMail()
+        );
     }
 }

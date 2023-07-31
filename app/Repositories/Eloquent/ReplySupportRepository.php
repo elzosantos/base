@@ -23,10 +23,9 @@ class ReplySupportRepository implements ReplyRepositoryInterface
             ->get();
         return $replies->toArray();
     }
-    public function createNew(
-        CreateReplyDTO $dto
-    ): stdClass {
-        $reply = $this->model->create(
+    public function createNew(CreateReplyDTO $dto): stdClass
+    {
+        $reply = $this->model->with('user')->create(
             [
                 'content' => $dto->content,
                 'support_id' => $dto->supportId,
@@ -34,6 +33,8 @@ class ReplySupportRepository implements ReplyRepositoryInterface
             ]
 
         );
+        $reply =  $reply->with('user')->first();
+       
         return (object) $reply->toArray();
     }
 

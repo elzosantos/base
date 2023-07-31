@@ -18,16 +18,20 @@ class SupportReplied
     /**
      * Create a new event instance.
      */
+   /**
+     * Create a new event instance.
+     */
     public function __construct(
-        protected stdClass $support
-    )
-    {
+        protected stdClass $reply,
+    ) {
         //
     }
 
-    public function support(): stdClass{
-        return $this->support;
+    public function reply(): stdClass
+    {
+        return $this->reply;
     }
+
 
     /**
      * Get the channels the event should broadcast on.
