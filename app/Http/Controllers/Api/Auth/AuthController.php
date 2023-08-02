@@ -14,10 +14,12 @@ class AuthController extends Controller
     public function auth(AuthRequest $request)
     {
         $user = User::where('email', $request->email)->first();
-
         if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages(["Credenciais inválidas"]);
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect']
+            ]);
         }
+
         $user->tokens()->delete();
         $token = $user->createToken($request->device_name)->plainTextToken;
 

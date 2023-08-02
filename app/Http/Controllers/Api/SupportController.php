@@ -31,7 +31,9 @@ class SupportController extends Controller
 
         );
 
-        return ApiAdapter::toJson($supports);
+        return (new SupportResource($supports))
+        ->response()
+        ->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
